@@ -1,6 +1,6 @@
-## Chemistry simulator ##
+## Sphere rendering ##
 
-This is a educational C++ project pixel-by-pixel rendering symple 3D scene using SFML.
+This is an educational C++ project pixel-by-pixel rendering symple 3D scene using SFML.
 
 ## Configuration ##
 
