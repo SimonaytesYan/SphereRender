@@ -13,15 +13,19 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(kWindowSize, kWindowSize), 
                             kWindowHeader);
-
-	Sphere sphere(Vector(0, 0, 15), 5, sf::Color::Green);
-	Vector light_src(10, 10, 10, sf::Color::White);
-	Screen screen(Vector(-10, 10, 5), 20, 20, kWindowSize, kWindowSize);
 	Vector camera(0, 0, 0);
+	Vector light_src1(50, 0, 0, sf::Color::White);
+	Vector light_src2(0, 300, 150, sf::Color::White);
+
+	Sphere sphere(Vector(0, 0, 150), 100, sf::Color::Blue);
+	Screen screen(Vector(-50, -50, 50), 100, 100, kWindowSize, kWindowSize);
 
 	Scene scene(camera, screen);
-	scene.AddLLightSrc(light_src);
+	scene.AddLLightSrc(light_src1);
+	scene.AddLLightSrc(light_src2);
 	scene.AddObject(sphere);
+	scene.Draw(&window);
+	window.display();
 
 	while (window.isOpen())
 	{
@@ -37,7 +41,5 @@ int main()
 			}
 		}
 
-		scene.Draw(&window);
-		window.display();
     }
 }

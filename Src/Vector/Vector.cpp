@@ -16,6 +16,12 @@ Vector::~Vector()
     this->z = NAN;
 }
 
+void Vector::Dump()
+{
+    printf("(%lf, %lf, %lf)\n", x, y, z);
+    //printf("color     = (%d, %d, %d)\n", color.r, color.g, color.b);
+}
+
 Vector operator+(const Vector& a, const Vector& b)
 {
     sf::Color new_color((a.color.r + b.color.r)/2, 
@@ -67,4 +73,9 @@ Vector operator!(const Vector& a)
 {
     double a_len = a.Length();
     return Vector(a.x / a_len, a.y / a_len, a.z / a_len);
+}
+
+double operator^(const Vector& a, const Vector& b)
+{
+    return (a, b) / (a.Length() * b.Length());
 }

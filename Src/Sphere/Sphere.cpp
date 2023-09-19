@@ -21,47 +21,48 @@ int SolveSqrEqu(double a, double b, double c, double& x1, double& x2)
     if (a == 0)
         return SolveLinEqu(b, c, x1);
     
-    double D2 = b * b - 2 * a * c;
-    if (D2 < 0)
+    double D = b * b - 4 * a * c;
+    if (D < 0)
         return 0;
-    if (D2 == 0)
+    if (D == 0)
     {
-        x1 = -b / (2*a);
+        x1 = -b / (2 * a);
         return 1;
     }
 
-    x1 = (-b + sqrt(D2)) / (2 * a);
-    x2 = (-b - sqrt(D2)) / (2 * a);
+    x1 = (-b + sqrt(D)) / (2 * a);
+    x2 = (-b - sqrt(D)) / (2 * a);
 
     return 2;
 }
 
+double min(double a, double b)
+{
+    return (a < b) ? a : b;
+}
+
+double max(double a, double b)
+{
+    return (a > b) ? a : b;
+}
+
 Vector Sphere::GetIntersectionPoint(Vector v0, Vector ray)
 {
-    double x = ray.GetX();
-    double y = ray.GetY();
-    double z = ray.GetZ();
+    Vector center1 = (center - v0);
 
-    double c_x = (center - v0).GetX();
-    double c_y = (center - v0).GetY();
-    double c_z = (center - v0).GetZ();
-
-    double a = x*x + y*y + z*z;
-    double b = -2 * (x*c_x + y*c_y + z*c_z);
-    double c = c_x*c_x + c_y*c_y + c_z*c_z - r*r;
+    double a = (ray, ray);
+    double b = -2 * (ray, center1);
+    double c = (center1, center1) - r * r;
 
     double root1       = 0;
     double root2       = 0;
-    int    root_number = SolveSqrEqu(a, b, c, root1, root1);
+    int    root_number = SolveSqrEqu(a, b, c, root1, root2);
 
     if (root_number == 0 || root_number == -1)
         return Vector(NAN, NAN, NAN, sf::Color::Black);
-
-    if (root1 > 0)
-        return v0 + ray * root1;
     
-    if (root_number == 2 && root2 > 0)
-        return v0 + ray * root2;
+    if (root_number == 2)
+        return v0 + ray * min(root2, root1);
 
-    return Vector(NAN, NAN, NAN, sf::Color::Black);
+    return v0 + ray * root1;
 }

@@ -2,6 +2,7 @@
     "files.associations": {
         "*.s": "nasm",
         "ChangeLog": "plaintext",
-        "run": "cpp"
+        "run": "cpp",
+        "random": "cpp"
     }
 }
