@@ -34,7 +34,7 @@ void Scene::Draw(sf::RenderWindow* window)
                         double diff_coeff = normal ^ light_ray; 
 
                         if (spec_coeff > 0)
-                            color = color + light_src[l_i].GetColor() * pow(spec_coeff, 10);
+                            color = color + light_src[l_i].GetColor() * pow(spec_coeff, objects[obj_i].GetShininessFact());
                         if (diff_coeff > 0)
                             color = color + objects[obj_i].GetColor() * diff_coeff;
                     }

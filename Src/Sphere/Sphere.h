@@ -10,15 +10,18 @@ class Sphere
 {
     Vector center;
     double r;
-    Color color;
+    Color  color;
+    double shininess_factor;
 
     public :
-    Sphere(Vector _center, double _r, Color _color) :
+    Sphere(Vector _center, double _r, Color _color, double _shininess_factor = 10) :
     center (_center),
     r (_r),
-    color (_color)
+    color (_color),
+    shininess_factor(_shininess_factor)
     {};
 
+    double GetShininessFact() { return shininess_factor; };
     Color GetColor() { return color; };
     Vector GetCenter() { return center; };
                                                             //v0 - point from which ray is emitted
