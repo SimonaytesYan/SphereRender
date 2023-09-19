@@ -16,9 +16,26 @@ class DynArray
         array    = (T*)calloc(length, sizeof(T));
     };
 
-    T operator[](int index);
+    double GetLength() { return length; };
 
-    void PushBack(T elem);
+    T operator[](int index)
+    {
+        if (index >= length)
+            length = index + 1;
+        return array[index];
+    };
+
+    void PushBack(T elem)
+    {
+        if (capacity <= length)
+        {
+            capacity = capacity * 2 + 1;
+            array = (T*)realloc(array, capacity * sizeof(T));
+        }
+
+        array[length] = elem;
+        length++;
+    };
 };
 
 #endif  //SYM_DYNAMIC_ARRAY

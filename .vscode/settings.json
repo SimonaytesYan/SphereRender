@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.s": "nasm",
+        "ChangeLog": "plaintext",
+        "run": "cpp"
+    }
+}

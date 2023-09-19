@@ -39,6 +39,15 @@ Vector operator-(const Vector& a, const Vector& b)
     return a + (-b);
 }
 
+Vector operator+=(Vector& a, const Vector& b)
+{
+    a.x += b.x;
+    a.y += b.y;
+    a.z += b.z;
+
+    return a;
+}
+
 Vector operator*(const Vector& a, double b)
 {
     return Vector(a.x * b, a.y * b, a.z * b, a.color);
@@ -58,9 +67,4 @@ Vector operator!(const Vector& a)
 {
     double a_len = a.Length();
     return Vector(a.x / a_len, a.y / a_len, a.z / a_len);
-}
-
-inline double Vector::Length() const
-{ 
-	return sqrt(x*x + y*y + z*z);
 }

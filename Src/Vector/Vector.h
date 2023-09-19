@@ -1,6 +1,7 @@
 #ifndef SYM_GEOM_VECTOR
 #define SYM_GEOM_VECTOR
 
+#include <math.h>
 #include <SFML/Graphics.hpp>
 
 class Vector
@@ -21,10 +22,11 @@ class Vector
     double    GetZ()     {return z;};
     sf::Color GetColor() {return color;};
 
-    inline double Length() const;
+    inline double Length() const { return sqrt(x*x + y*y + z*z); };
 
     friend Vector operator+(const Vector& a, const Vector& b);
     friend Vector operator-(const Vector& a);
+    friend Vector operator+=(Vector& a, const Vector& b);
     friend Vector operator-(const Vector& a, const Vector& b);
     friend Vector operator*(const Vector& a, double b);
     friend Vector operator/(const Vector& a, double b);
@@ -34,6 +36,7 @@ class Vector
 
 Vector operator-(const Vector& a);
 Vector operator-(const Vector& a, const Vector& b);
+Vector operator+=(Vector& a, const Vector& b);
 Vector operator*(const Vector& a, double b);
 Vector operator/(const Vector& a, double b);
 double operator,(const Vector& a, const Vector& b);		//scalar product

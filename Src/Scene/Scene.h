@@ -8,23 +8,22 @@
 
 class Scene
 {
-    Vector camera = Vector(0, 0, 0);
+    Vector camera;
     Screen screen;
     
-    DynArray<Vector> lights_sources = DynArray<Vector>(0);
+    DynArray<Vector> light_src = DynArray<Vector>(0);
     DynArray<Sphere> objects        = DynArray<Sphere>(0);
 
     public :
-    Scene(Vector _camera, Screen _screen)
+    Scene(Vector _camera, Screen _screen) :
+    camera (_camera),
+    screen (_screen)
     {
-        camera = _camera;
-        screen = _screen;
-
-        lights_sources = DynArray<Vector>(0);
+        light_src = DynArray<Vector>(0);
         objects        = DynArray<Sphere>(0);
     };
 
-    void AddLightPoint(Vector new_light_source) { lights_sources.PushBack(new_light_source); };
+    void AddLLightSrc(Vector new_light_source) { light_src.PushBack(new_light_source); };
     void AddObject(Sphere new_object) { objects.PushBack(new_object); };
 
     void Draw(sf::RenderWindow* window);
