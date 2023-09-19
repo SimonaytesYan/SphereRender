@@ -2,6 +2,8 @@
 
 This is an educational C++ project pixel-by-pixel rendering symple 3D scene using SFML.
 
+![Preview](https://github.com/SimonaytesYan/SphereRender/blob/master/Img/Preview.png)
+
 ## Configuration ##
 
 To run the project you need install SFML.
