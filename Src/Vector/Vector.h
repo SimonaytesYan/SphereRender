@@ -4,6 +4,8 @@
 #include <math.h>
 #include <SFML/Graphics.hpp>
 
+#include "../Color/Color.h"
+
 class Vector
 {
     protected :
@@ -11,16 +13,16 @@ class Vector
     double y;
     double z;
 
-    sf::Color color;
+    Color color;
 
     public : 
-    Vector(double x, double y, double z, sf::Color color = sf::Color::White);
+    Vector(double x, double y, double z, Color color = Color(255, 255, 255));
     ~Vector();
     
-    double    GetX()     {return x;};
-    double    GetY()     {return y;};
-    double    GetZ()     {return z;};
-    sf::Color GetColor() {return color;};
+    double GetX()     {return x;};
+    double GetY()     {return y;};
+    double GetZ()     {return z;};
+    Color  GetColor() {return color;};
 
     inline double Length() const { return sqrt(x*x + y*y + z*z); };
 

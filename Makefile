@@ -6,8 +6,8 @@ SFML_FLAGS    = -lsfml-graphics -lsfml-window -lsfml-system
 
 EXE_FILE = Exe/run
 
-release: vector sphere scene
-	g++ $(SFML_FLAGS) $(GCC_FLAGS) Src/main.cpp Obj/Vector.o Obj/Scene.o Obj/Sphere.o -o $(EXE_FILE)
+release: color vector sphere scene
+	g++ $(SFML_FLAGS) $(GCC_FLAGS) Src/main.cpp Obj/Vector.o Obj/Scene.o Obj/Sphere.o Obj/Color.o -o $(EXE_FILE)
 
 vector:
 	g++ -c $(GCC_FLAGS) Src/Vector/Vector.cpp -o Obj/Vector.o
@@ -17,6 +17,9 @@ sphere:
 
 scene:
 	g++ -c $(GCC_FLAGS) Src/Scene/Scene.cpp -o Obj/Scene.o
+
+color:
+	g++ -c $(GCC_FLAGS) Src/Color/Color.cpp -o Obj/Color.o
 
 run:
 	./$(EXE_FILE)

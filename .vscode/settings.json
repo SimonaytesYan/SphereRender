@@ -3,6 +3,7 @@
         "*.s": "nasm",
         "ChangeLog": "plaintext",
         "run": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "*.tcc": "cpp"
     }
 }

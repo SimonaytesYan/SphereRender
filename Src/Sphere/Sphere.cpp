@@ -59,7 +59,7 @@ Vector Sphere::GetIntersectionPoint(Vector v0, Vector ray)
     int    root_number = SolveSqrEqu(a, b, c, root1, root2);
 
     if (root_number == 0 || root_number == -1)
-        return Vector(NAN, NAN, NAN, sf::Color::Black);
+        return Vector(NAN, NAN, NAN, Color(0, 0, 0));
     
     if (root_number == 2)
         return v0 + ray * min(root2, root1);

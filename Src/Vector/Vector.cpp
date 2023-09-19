@@ -2,7 +2,7 @@
 
 #include "Vector.h"
 
-Vector::Vector(double x, double y, double z, sf::Color color) :
+Vector::Vector(double x, double y, double z, Color color) :
 x (x),
 y (y),
 z (z),
@@ -19,12 +19,11 @@ Vector::~Vector()
 void Vector::Dump()
 {
     printf("(%lf, %lf, %lf)\n", x, y, z);
-    //printf("color     = (%d, %d, %d)\n", color.r, color.g, color.b);
 }
 
 Vector operator+(const Vector& a, const Vector& b)
 {
-    sf::Color new_color((a.color.r + b.color.r)/2, 
+    Color new_color((a.color.r + b.color.r)/2, 
                         (a.color.g + b.color.g)/2,
                         (a.color.b + b.color.b)/2);
 
@@ -34,9 +33,9 @@ Vector operator+(const Vector& a, const Vector& b)
 
 Vector operator-(const Vector& a)
 {
-    sf::Color new_color(255 - a.color.r, 
-                        255 - a.color.g, 
-                        255 - a.color.b);
+    Color new_color(255 - a.color.r, 
+                    255 - a.color.g, 
+                    255 - a.color.b);
     return Vector(-a.x, -a.y, -a.z, new_color);
 }
 

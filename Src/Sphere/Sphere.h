@@ -3,22 +3,23 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "../Color/Color.h"
 #include "../Vector/Vector.h"
 
 class Sphere
 {
     Vector center;
     double r;
-    sf::Color color;
+    Color color;
 
     public :
-    Sphere(Vector _center, double _r, sf::Color _color) :
+    Sphere(Vector _center, double _r, Color _color) :
     center (_center),
     r (_r),
     color (_color)
     {};
 
-    sf::Color GetColor() { return color; };
+    Color GetColor() { return color; };
     Vector GetCenter() { return center; };
                                                             //v0 - point from which ray is emitted
                                                             // return white vector with coords intersection point 
