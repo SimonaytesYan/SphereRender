@@ -14,10 +14,10 @@ int main()
     sf::RenderWindow window(sf::VideoMode(kWindowSize, kWindowSize), 
                             kWindowHeader);
 	Vector camera(0, 0, 0);
-	Vector light_src1(50, 0, 0, Color(255, 255, 255));
-	Vector light_src2(0, 300, 150, Color(255, 255, 255));
+	Vector light_src1(50, 0, 0, Color(128, 0, 128));
+	Vector light_src2(0, 300, 150, Color(255, 255, 0));
 
-	Sphere sphere(Vector(0, 0, 150), 100, Color(128, 128, 128));
+	Sphere sphere(Vector(0, 0, 150), 100, Color(128, 128, 128), 20);
 	
 	Screen screen(Vector(-50, -50, 50), 100, 100, kWindowSize, kWindowSize);
 

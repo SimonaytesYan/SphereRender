@@ -36,7 +36,7 @@ void Scene::Draw(sf::RenderWindow* window)
                         if (spec_coeff > 0)
                             color = color + light_src[l_i].GetColor() * pow(spec_coeff, objects[obj_i].GetShininessFact());
                         if (diff_coeff > 0)
-                            color = color + objects[obj_i].GetColor() * diff_coeff;
+                            color = color + (light_src[l_i].GetColor() * objects[obj_i].GetColor()) * diff_coeff;
                     }
                     result.setPixel(x, y, color + objects[obj_i].GetColor() * background_light);
                 }

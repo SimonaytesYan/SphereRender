@@ -29,5 +29,6 @@ struct Color
 
 Color operator*(Color color, double coeff);
 Color operator+(Color color_a, Color color_b);
+Color operator*(Color color_a, Color color_b);
 
 #endif //SYM_COLOR
