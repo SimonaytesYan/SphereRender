@@ -21,25 +21,26 @@ void Scene::Draw(sf::RenderWindow* window)
             {
                 Vector int_point = objects[obj_i].GetIntersectionPoint(camera, ray);
 
-                if (int_point.GetColor() != sf::Color::Black)
+                if (int_point.GetColor() == sf::Color::Black)
+                    continue;
+
+                Color color(0, 0, 0);
+                Vector normal = int_point - objects[obj_i].GetCenter();
+
+                for (int l_i = 0; l_i < light_src.GetLength(); l_i++)
                 {
-                    Color color(0, 0, 0);
-                    Vector normal = int_point - objects[obj_i].GetCenter();
-                    for (int l_i = 0; l_i < light_src.GetLength(); l_i++)
-                    {
-                        Vector light_ray     = light_src[l_i] - int_point;
-                        Vector reflected_ray = -light_ray - (normal * 2 * (normal ^ (-light_ray)));
+                    Vector light_ray     =  light_src[l_i] - int_point;
+                    Vector reflected_ray = -light_ray - (normal * 2 * (normal ^ (-light_ray)));
 
-                        double spec_coeff = (camera - int_point) ^ reflected_ray;
-                        double diff_coeff = normal ^ light_ray; 
+                    double spec_coeff = (camera - int_point) ^ reflected_ray;
+                    double diff_coeff = normal ^ light_ray; 
 
-                        if (spec_coeff > 0)
-                            color = color + light_src[l_i].GetColor() * pow(spec_coeff, objects[obj_i].GetShininessFact());
-                        if (diff_coeff > 0)
-                            color = color + (light_src[l_i].GetColor() * objects[obj_i].GetColor()) * diff_coeff;
-                    }
-                    result.setPixel(x, y, color + objects[obj_i].GetColor() * background_light);
+                    if (spec_coeff > 0)
+                        color = color + light_src[l_i].GetColor() * pow(spec_coeff, objects[obj_i].GetShininessFact());
+                    if (diff_coeff > 0)
+                        color = color + (light_src[l_i].GetColor() * objects[obj_i].GetColor()) * diff_coeff;
                 }
+                result.setPixel(x, y, color + objects[obj_i].GetColor() * background_light);
             }
         }
 

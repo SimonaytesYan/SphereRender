@@ -17,7 +17,7 @@ class Scene
     double background_light;
 
     public :
-    Scene(Vector _camera, Screen _screen, double _background_light = 0.15) :
+    Scene(Vector _camera, Screen _screen, double _background_light = 0.1) :
     camera (_camera),
     screen (_screen),
     background_light (_background_light)
