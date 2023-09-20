@@ -14,13 +14,16 @@ class Scene
     DynArray<Vector> light_src = DynArray<Vector>(0);
     DynArray<Sphere> objects        = DynArray<Sphere>(0);
 
+    double background_light;
+
     public :
-    Scene(Vector _camera, Screen _screen) :
+    Scene(Vector _camera, Screen _screen, double _background_light = 0.15) :
     camera (_camera),
-    screen (_screen)
+    screen (_screen),
+    background_light (_background_light)
     {
         light_src = DynArray<Vector>(0);
-        objects        = DynArray<Sphere>(0);
+        objects   = DynArray<Sphere>(0); 
     };
 
     void AddLLightSrc(Vector new_light_source) { light_src.PushBack(new_light_source); };

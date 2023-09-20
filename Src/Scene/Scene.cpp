@@ -38,7 +38,7 @@ void Scene::Draw(sf::RenderWindow* window)
                         if (diff_coeff > 0)
                             color = color + objects[obj_i].GetColor() * diff_coeff;
                     }
-                    result.setPixel(x, y, color);
+                    result.setPixel(x, y, color + objects[obj_i].GetColor() * background_light);
                 }
             }
         }
